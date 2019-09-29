@@ -16,12 +16,12 @@ John always takes apples and Mary pears. They take as their mothers buy, that is
 Every day, the teacher made an assessment of the subject of the day before. The next day she checked the best and accepted the gifts according to the established rule and took note of the results in this spreadsheet.
 
 
-Days	  Pears   Apples   Best Student   Fruit 1   Fruit 2   Fruit 3
-1	        3	      1	        Mary	       Pear	     Pear	     Pear
-2	        2	      1	        John	       Apple	   Pear	     Pear
-3	        1	      4	        Mary	       Pera	     Apple	   Apple
-...	...	...	...	 	 	 
-30	      1	      1	        John	       Apple	   Pear	     --
+Days | Pears | Apples | Best Student | Fruit 1 | Fruit 2 | Fruit 3
+---- | ----- | ------ | ------------ | ------- | ------- | -------
+1	   | 3     | 1	    | Mary	       | Pear    | Pear	   | Pear
+2	   | 2     | 1	    | John	       | Apple	 | Pear	   | Pear
+3	   | 1     | 4	    | Mary	       | Pera	   | Apple	 | Apple
+30	 | 1     | 1	    | John	       | Apple	 | Pear	   | -- 
 
 This month the teacher took ____ apple e ____ Pear.
 
