@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <title>Joao e Maria</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table {
+            border-radius: 5px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr {
+            background-color: #f2f2f2
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1" id="tabelaHTML">
+        <tr>
+            <th>Dia </th>
+            <th>Peras </th>
+            <th>Maçãs </th>
+            <th>Melhor Aluno</th>
+            <th>FRUTA 1 </th>
+            <th>FRUTA 2 </th>
+            <th>FRUTA 3 </th>
+        </tr>
+    </table>
+    <h2 id="total"></h2>
+    <center>
+        <h2>Bruno Rossetto Pereira</h2>
+    </center>
+</body>
+
+</html>
+<script type="text/javascript">
+    var maximo = 5; // Número máximo de frutas que podem ser levadas por aluno.
+    var numero_macas_total = 0; // Número total de maçãs levadas pela professora no mês.
+    var numero_peras_total = 0; // Número total de peras levadas pela professora no mês.
+    for (var dia = 1; dia < 31; dia++) { // Gera os dias do mês.
+        var numero_peras = parseInt(Math.random() * maximo + 0); // Gera um número aleatório entre 0 e 5 de peras por dia.
+        var numero_macas = parseInt(Math.random() * maximo + 0); // Gera um número aleatório entre 0 e 5 de maçãs por dia.
+        var nome_random = parseInt(Math.random() * 2); // Gera o nome do melhor aluno do dia(se o random gerar 1, o melhor aluno é o João, caso contrário, a Maria é a melhor aluna).
+        var tabela = '<tr>'; // Cria uma linha da tabela.
+        tabela += '<td>' + dia + '</td>'; // Printa na tela o dia.
+        tabela += '<td>' + numero_peras + '</td>'; // Printa na tela o número de peras.
+        tabela += '<td>' + numero_macas + '</td>'; // Printa na tela o número de maçãs.
+        if (nome_random == 1) { // Se o gerador de nomes gerou o número 1, o joão é o melhor aluno.
+            tabela += '<td>João</td>';
+            for (var contador2 = 1; contador2 <= numero_macas && contador2 <= 3; contador2++) { // Adiciona o numero de maçãs levadas pelo joão(que é o melhor aluno do dia) naquele dia.
+                var resto_frutas_joao = (3 - numero_macas); // Valor de quantas frutas faltam para completar as 3 que a professora leva pra casa por dia.
+                if (numero_macas >= 3) { // Se o numero de maçãs levadas pelo joão for maior ou igual a 3, adiciona 3 colunas com "maçã".
+                    tabela += '<td>Maçã</td>';
+                    numero_macas_total += 1; // Acrescenta 1 no número total de maçãs do mês.
+                } else { // Se o número de maçãs levadas pelo João for menor que 3, adiciona o número de colunas com "maçã" levadas por ele.
+                    tabela += '<td>Maçã</td>';
+                    numero_macas_total += 1; // Acrescenta 1 no número total de maçãs do mês.
+                }
+            }
+            if (numero_macas == 0) // Se o número de maçãs for igual a 0, o número de frutas que faltam para a professora levar é 3.
+                resto_frutas_joao = 3;
+
+            for (var contador3 = 1; contador3 <= numero_peras && contador3 <= resto_frutas_joao; contador3++) { // Adiciona as frutas do segundo melhor aluno do dia.
+                numero_peras_total += 1;
+                tabela += '<td>Pera</td>';
+            }
+            var resto_final_joao = resto_frutas_joao - contador3; // Valor de quantas frutas faltam para completar 3, após ja ter adicionado as frutas do melhor aluno e do segundo melhor aluno do dia.
+            for (var contador6 = 1; contador6 <= resto_final_joao + 1; contador6++) // Se não completar as 3 frutas no dia, adiciona uma coluna em branco.
+                tabela += '<td></td>';
+        } else { // Se não for o João o melhor aluno do dia, é a Maria.
+            tabela += '<td>Maria</td>'
+            for (var contador4 = 1; contador4 <= numero_peras && contador4 <= 3; contador4++) { // Adiciona o numero de peras levadas pela Maria(que é a melhor aluna do dia) naquele dia.
+                var resto_frutas_maria = (3 - numero_peras); // Valor de quantas frutas faltam para completar as 3 que a professora leva pra casa por dia.
+                if (numero_peras >= 3) { // Se o numero de peras levadas pela Maria for maior ou igual a 3, adiciona 3 colunas com "pera".
+                    tabela += '<td>Pera</td>';
+                    numero_peras_total += 1; // Acrescenta 1 no número total de peras do mês.
+                }
+                if (numero_peras < 3) {
+                    tabela += '<td>Pera</td>';
+                    numero_peras_total += 1; // Acrescenta 1 no número total de peras do mês.
+                }
+            }
+            if (numero_peras == 0) // Se o número de peras for igual a 0, o número de frutas que faltam para a professora levar é 3.
+                resto_frutas_maria = 3;
+            for (var contador5 = 1; contador5 <= numero_macas && contador5 <= resto_frutas_maria; contador5++) {
+                numero_macas_total += 1; // Acrescenta 1 no número total de maçãs do mês.
+                tabela += '<td>Maçã</td>';
+            }
+            var resto_final_maria = resto_frutas_maria - contador5; // Valor de quantas frutas faltam para completar as 3 que a professora leva pra casa por dia.
+            for (var contador7 = 1; contador7 <= resto_final_maria + 1; contador7++) // Se não completar as 3 frutas no dia, adiciona uma coluna em branco.
+                tabela += '<td></td>'; // Coluna em branco
+        }
+
+        tabela += '</tr>'; // fecha linha com as informações daquele dia do mês.
+        document.getElementById('tabelaHTML').insertAdjacentHTML("beforeEnd", tabela); // Insere as linhas da tabela já preenchidas.
+    }
+    document.getElementById('total').innerHTML = "Este mês a professora levou " + numero_macas_total + " maçãs e " + numero_peras_total + " peras."; // Printa o número total de maçãs e peras levadas pela professora por mês.
+</script>
